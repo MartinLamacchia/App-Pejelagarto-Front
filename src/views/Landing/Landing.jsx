@@ -21,8 +21,8 @@ function Landing() {
       </div>
       <div className={styles.containerForm}>
         <form action="">
-          <input type="text" placeholder="Email" />
-          <input type="Password" placeholder="Contraseña" />
+          <input type="text" placeholder={(t("email"))} />
+          <input type="Password" placeholder={(t("password"))} />
           <button>{t("login")}</button>
         </form>
         <h3>{t("register")}</h3>
