@@ -5,9 +5,16 @@ import styles from "./Landing.module.css";
 import { FaInstagramSquare } from "react-icons/fa";
 import { FaFacebookSquare } from "react-icons/fa";
 import { FaLinkedin } from "react-icons/fa";
+import { useState } from "react";
+import Register from "../../components/Register/Register";
 
 function Landing() {
   const { t } = useTranslation();
+  const [showRegister, setShowRegister] = useState(false)
+
+  const handleShowRegister = () => {
+    setShowRegister(true)
+  }
 
   return (
     <div className={styles.container}>
@@ -25,13 +32,18 @@ function Landing() {
           <input type="Password" placeholder={(t("password"))} />
           <button>{t("login")}</button>
         </form>
-        <h3>{t("register")}</h3>
+        <h3 onClick={handleShowRegister}>{t("register")}</h3>
       </div>
       <div className={styles.containerSocial}>
         <FaInstagramSquare className={styles.iconSocial} />
         <FaFacebookSquare className={styles.iconSocial} />
         <FaLinkedin className={styles.iconSocial} />
       </div>
+      {
+        showRegister && (
+          <Register setShowRegister={setShowRegister}/>
+        )
+      }
     </div>
   );
 }
