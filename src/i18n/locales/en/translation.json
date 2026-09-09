@@ -8,5 +8,21 @@
     "send": "Send",
     "fisherman": "Fisherman",
     "fiscal": "Fiscal",
-    "judge": "Judge"
+    "judge": "Judge",
+    "name": "Name",
+    "lastname": "Last name",
+    "phone": "Phone",
+    "country": "Country",
+    "nameRequired": "The name is mandatory",
+    "nameLyricsOnly": "The name can only contain letters",
+    "lastnameRequired": "The last name is mandatory",
+    "lastnameLyricsOnly": "The last name can only contain letters",
+    "emailRequired": "The email is mandatory",
+    "invalidEmailFormat": "The email does not have a valid format",
+    "passwordRequired": "The password is mandatory",
+    "invalidPassFormat": "The password must be at least 6 characters long and include letters and numbers",
+    "phoneRequired": "The phone is mandatory",
+    "invalidPhone": "The phone number is invalid",
+    "countryRequired": "The country is mandatory",
+    "countryLyricsOnly": "The country can only contain letters"
 }

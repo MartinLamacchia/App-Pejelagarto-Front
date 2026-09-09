@@ -8,5 +8,21 @@
     "send": "Enviar",
     "fisherman": "Pescador",
     "fiscal": "Fiscal",
-    "judge": "Juiz"
+    "judge": "Juiz",
+    "name": "Nome",
+    "lastname": "Sobrenome",
+    "phone": "Telefone",
+    "country": "País",
+    "nameRequired": "O nome é obrigatório",
+    "nameLyricsOnly": "O nome só pode conter letras",
+    "lastnameRequired": "O sobrenome é obrigatório",
+    "lastnameLyricsOnly": "O sobrenome só pode conter letras",
+    "emailRequired": "Você precisa fornecer um endereço de e-mail",
+    "invalidEmailFormat": "O e-mail não está em um formato válido",
+    "passwordRequired": "É necessária uma senha",
+    "invalidPassFormat": "A senha deve ter no mínimo 6 caracteres, incluindo letras e números",
+    "phoneRequired": "É necessário o telefone",
+    "invalidPhone": "O número de telefone é inválido",
+    "countryRequired": "O país é obrigatório",
+    "countryLyricsOnly": "O país só pode conter letras"
 }
