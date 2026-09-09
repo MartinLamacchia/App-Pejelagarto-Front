@@ -2,7 +2,6 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  flex-direction: column;
   position: fixed;
   top: 0;
   left: 0;
@@ -12,22 +11,27 @@
   background-color: rgba(0, 0, 0, 0.5);
 
   .content {
-    width: 60%;
-    height: 60%;
-    padding: 2rem;
-    background-color: rgba(255, 239, 167, 0.8);
+    width: min(500px, 90%);
+    max-height: 90vh;
+    padding: 1.5rem 2rem;
+    background-color: rgba(255, 239, 167, 0.95);
     border-radius: 10px;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+
     display: flex;
-    justify-content: center;
-    align-items: center;
     flex-direction: column;
+    align-items: center;
+
     color: #000000;
     position: relative;
+
+    box-sizing: border-box;
   }
 
   .title {
-    margin-bottom: 1rem;
+    margin: 0 0 1rem 0;
+    text-align: center;
+    flex-shrink: 0;
   }
 
   .btnClose {
@@ -36,6 +40,7 @@
     right: 10px;
     font-size: 1.4rem;
     cursor: pointer;
+    z-index: 10;
   }
 
   .containerForm {
@@ -43,59 +48,88 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    flex-direction: column;
-    gap: 1rem;
+  }
 
-    .form {
+  .form {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.8rem;
+
+    max-height: 70vh;
+    overflow-y: auto;
+
+    padding: 0.2rem 0.5rem;
+    box-sizing: border-box;
+
+    .inputGroup {
+      width: 90%;
+      display: flex;
+      flex-direction: column;
+      gap: 0.2rem;
+      box-sizing: border-box;
+    }
+
+    input,
+    select {
+      width: 100%;
+      min-height: 38px;
+      padding: 0.5rem 1rem;
+
+      border: none;
+      border-radius: 10px;
+      outline: none;
+
+      font-family: inherit;
+      font-size: 0.9rem;
+
+      box-sizing: border-box;
+    }
+
+    select {
+      width: 90%;
+      cursor: pointer;
+    }
+
+    .errorText {
+      color: #d32f2f;
+      font-size: 0.7rem;
+      line-height: 1.1;
+      padding-left: 0.3rem;
+    }
+
+    .phoneInput {
       width: 100%;
       display: flex;
-      justify-content: center;
       align-items: center;
-      flex-direction: column;
-      gap: 1.5rem;
+      box-sizing: border-box;
 
       input {
-        width: 80%;
-        padding: 0.3rem 1rem;
+        width: 100%;
+        min-height: 38px;
         border: none;
-        border-radius: 10px;
         outline: none;
         font-family: inherit;
-        font-size: 1rem;
+        font-size: 0.9rem;
+        box-sizing: border-box;
       }
+    }
 
-      .phoneInput {
-        width: 95%;
+    button {
+      padding: 0.4rem 2.5rem;
+      margin-top: 0.3rem;
 
-        input {
-          width: 100%;
-          border: none;
-          outline: none;
-          font-family: inherit;
-          font-size: 1rem;
-        }
-      }
+      border-radius: 10px;
+      background-color: #0071ba;
+      color: #000000;
+      cursor: pointer;
+      border: 1px solid #0071ba;
 
-      select {
-        width: 95%;
-        padding: 0.3rem 1rem;
-        border: none;
-        border-radius: 10px;
-        outline: none;
-        font-family: inherit;
-        font-size: 1rem;
-      }
+      font-family: "Valley Sans", sans-serif;
+      font-weight: bold;
 
-      button {
-        padding: 0.3rem 2.5rem;
-        border-radius: 10px;
-        background-color: #0071ba;
-        color: #000000;
-        cursor: pointer;
-        border: 1px solid #0071ba;
-        font-family: "Valley Sans", sans-serif;
-        font-weight: bold;
-      }
+      flex-shrink: 0;
     }
   }
 }

@@ -1,8 +1,6 @@
 import { isValidPhoneNumber } from "react-phone-number-input";
-import { useTranslation } from "react-i18next";
 
-export const validateRegister = (formData) => {
-	const { t } = useTranslation();
+export const validateRegister = (formData, t) => {
   const errors = {};
 
   // Regex para nombre y apellido: solo letras (incluye acentos de es/pt) y espacios, sin números ni símbolos
