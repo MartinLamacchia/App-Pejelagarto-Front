@@ -4,5 +4,9 @@
     "register": "Cadastrar-se",
     "email": "E-mail",
     "password": "Senha",
-    "slogan": "Um app para competição de pesca"
+    "slogan": "Um app para competição de pesca",
+    "send": "Enviar",
+    "fisherman": "Pescador",
+    "fiscal": "Fiscal",
+    "judge": "Juiz"
 }

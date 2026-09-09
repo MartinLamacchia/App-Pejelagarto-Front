@@ -1,10 +1,28 @@
-import React from "react";
+import React, { useState } from "react";
 import styles from "./Register.module.css";
 import { IoIosCloseCircle } from "react-icons/io";
 import { useTranslation } from "react-i18next";
 
 const Register = ({ setShowRegister }) => {
   const { t } = useTranslation();
+  const [form, setForm] = useState({
+    name: "",
+    lastname: "",
+    email: "",
+    password: "",
+    phone: 0,
+    country: "",
+    role: "fisherman"
+  })
+
+  const [error, setError] = useState({
+    name: "",
+    lastname: "",
+    email: "",
+    password: "",
+    phone: 0,
+    country: ""
+  })
 
   const handleCloseRegister = () => {
     setShowRegister(false);
@@ -24,13 +42,13 @@ const Register = ({ setShowRegister }) => {
             <input type="text" />
             <input type="password" />
             <select name="role">
-              <option value="participante">Participante</option>
-              <option value="juez">Juez</option>
-              <option value="fiscal">Fiscal</option>
+              <option value="fisherman">{(t("fisherman"))}</option>
+              <option value="fiscal">{(t("fiscal"))}</option>
+              <option value="judge">{(t("judge"))}</option>
             </select>
             <input type="text" />
             <input type="text" />
-            <button>Enviar</button>
+            <button>{(t("send"))}</button>
           </form>
         </div>
       </div>

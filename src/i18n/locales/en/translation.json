@@ -4,5 +4,9 @@
     "register": "Sign up",
     "email": "Email",
     "password": "Password",
-    "slogan": "A fishing competition app"
+    "slogan": "A fishing competition app",
+    "send": "Send",
+    "fisherman": "Fisherman",
+    "fiscal": "Fiscal",
+    "judge": "Judge"
 }

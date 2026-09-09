@@ -77,11 +77,11 @@
       button {
         padding: 0.3rem 2.5rem;
         border-radius: 10px;
-        background-color: #ffffff;
-        color: #0071ba;
+        background-color: #0071ba;
+        color: #000000;
         cursor: pointer;
         border: 1px solid #0071ba;
-        font-family: "Nunito", serif;
+        font-family: "Valley Sans", sans-serif;
         font-weight: bold;
         transition: all 0.5s;
 

@@ -4,5 +4,9 @@
     "register": "Registrarse",
     "email": "Correo electrónico",
     "password": "Contraseña",
-    "slogan": "Una app para competencia de pesca"
+    "slogan": "Una app para competencia de pesca",
+    "send": "Enviar",
+    "fisherman": "Pescador",
+    "fiscal": "Fiscal",
+    "judge": "Juez"
 }
