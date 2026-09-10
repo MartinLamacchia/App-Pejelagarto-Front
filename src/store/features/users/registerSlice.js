@@ -5,7 +5,7 @@ export const registerUser = createAsyncThunk(
   "register/registerUser",
   async (userData, { rejectWithValue }) => {
     try {
-      const { data } = await axios.post("http://localhost:3001/user/register", userData);
+      const { data } = await axios.post(`${import.meta.env.VITE_API_URL}/user/register`, userData);
       return data; // esto termina en action.payload del "fulfilled"
     } catch (error) {
       // Cuando axios detecta un status de error (400, 409, 500...), guarda la respuesta en error.response
