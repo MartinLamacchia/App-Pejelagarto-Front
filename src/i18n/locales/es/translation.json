@@ -24,5 +24,7 @@
     "phoneRequired": "El teléfono es obligatorio",
     "invalidPhone": "El número de teléfono no es válido",
     "countryRequired": "El país es obligatorio",
-    "countryLyricsOnly": "El país solo puede contener letras"
+    "countryLyricsOnly": "El país solo puede contener letras",
+    "error_duplicate_user": "El Correo Electronico o Nombre y Apellido ya estan registrados",
+    "error_register_success": "El usuario se registro con exito"
 }

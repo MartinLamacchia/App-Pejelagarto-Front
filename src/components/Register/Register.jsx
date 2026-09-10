@@ -1,13 +1,19 @@
-import React, { useState } from "react";
+import { useState } from "react";
+import { useDispatch, useSelector } from "react-redux";
 import styles from "./Register.module.css";
 import { IoIosCloseCircle } from "react-icons/io";
 import { useTranslation } from "react-i18next";
 import PhoneInput from "react-phone-number-input";
 import "react-phone-number-input/style.css";
-import {validateRegister} from './validateRegister.js'
+import { validateRegister } from "./validateRegister";
+import { registerUser, resetRegisterState } from "../../store/features/users/registerSlice";
+import ModalError from "../ModalError/ModalError";
 
 const Register = ({ setShowRegister }) => {
   const { t } = useTranslation();
+  const dispatch = useDispatch();
+  const { loading, error, success } = useSelector((state) => state.register);
+
   const [formData, setFormData] = useState({
     name: "",
     lastname: "",
@@ -15,58 +21,59 @@ const Register = ({ setShowRegister }) => {
     password: "",
     phone: "",
     country: "",
-    role: "fisherman"
-  })
+    role: "fisherman",
+  });
 
-  const [error, setError] = useState({})
+  const [fieldErrors, setFieldErrors] = useState({});
 
   const handleChange = (e) => {
     setFormData({
       ...formData,
-      [e.target.name]: e.target.value
-    })
-  }
+      [e.target.name]: e.target.value,
+    });
+  };
 
   const handlePhoneChange = (value) => {
     setFormData({
       ...formData,
-      phone: value || ""
-    })
-  }
+      phone: value || "",
+    });
+  };
 
   const handleBlur = (e) => {
-    const { name } = e.target
-    const validationErrors = validateRegister(formData, t)
+    const { name } = e.target;
+    const validationErrors = validateRegister(formData, t);
 
-    setError((prevError) => ({
+    setFieldErrors((prevError) => ({
       ...prevError,
-      [name]: validationErrors[name]
-    }))
-  }
+      [name]: validationErrors[name],
+    }));
+  };
 
   const handlePhoneBlur = () => {
-    const validationErrors = validateRegister(formData, t)
+    const validationErrors = validateRegister(formData, t);
 
-    setError((prevError) => ({
+    setFieldErrors((prevError) => ({
       ...prevError,
-      phone: validationErrors.phone
-    }))
-  }
+      phone: validationErrors.phone,
+    }));
+  };
 
   const handleSubmit = (e) => {
-    e.preventDefault()
+    e.preventDefault();
 
-    const validationErrors = validateRegister(formData, t)
-    setError(validationErrors)
+    const validationErrors = validateRegister(formData, t);
+    setFieldErrors(validationErrors);
 
     if (Object.keys(validationErrors).length > 0) {
-      return
+      return;
     }
 
-    console.log("Formulario válido:", formData)
-  }
+    dispatch(registerUser(formData));
+  };
 
   const handleCloseRegister = () => {
+    dispatch(resetRegisterState());
     setShowRegister(false);
   };
 
@@ -82,23 +89,51 @@ const Register = ({ setShowRegister }) => {
           <form className={styles.form} onSubmit={handleSubmit}>
 
             <div className={styles.inputGroup}>
-              <input type="text" name="name" placeholder={t("name")} value={formData.name} onChange={handleChange} onBlur={handleBlur}/>
-              {error.name && <span className={styles.errorText}>{error.name}</span>}
+              <input
+                type="text"
+                name="name"
+                placeholder={t("name")}
+                value={formData.name}
+                onChange={handleChange}
+                onBlur={handleBlur}
+              />
+              {fieldErrors.name && <span className={styles.errorText}>{fieldErrors.name}</span>}
             </div>
 
             <div className={styles.inputGroup}>
-              <input type="text" name="lastname" placeholder={t("lastname")} value={formData.lastname} onChange={handleChange} onBlur={handleBlur}/>
-              {error.lastname && <span className={styles.errorText}>{error.lastname}</span>}
+              <input
+                type="text"
+                name="lastname"
+                placeholder={t("lastname")}
+                value={formData.lastname}
+                onChange={handleChange}
+                onBlur={handleBlur}
+              />
+              {fieldErrors.lastname && <span className={styles.errorText}>{fieldErrors.lastname}</span>}
             </div>
 
             <div className={styles.inputGroup}>
-              <input type="text" name="email" placeholder={t("email")} value={formData.email} onChange={handleChange} onBlur={handleBlur}/>
-              {error.email && <span className={styles.errorText}>{error.email}</span>}
+              <input
+                type="text"
+                name="email"
+                placeholder={t("email")}
+                value={formData.email}
+                onChange={handleChange}
+                onBlur={handleBlur}
+              />
+              {fieldErrors.email && <span className={styles.errorText}>{fieldErrors.email}</span>}
             </div>
 
             <div className={styles.inputGroup}>
-              <input type="password" name="password" placeholder={t("password")} value={formData.password} onChange={handleChange} onBlur={handleBlur}/>
-              {error.password && <span className={styles.errorText}>{error.password}</span>}
+              <input
+                type="password"
+                name="password"
+                placeholder={t("password")}
+                value={formData.password}
+                onChange={handleChange}
+                onBlur={handleBlur}
+              />
+              {fieldErrors.password && <span className={styles.errorText}>{fieldErrors.password}</span>}
             </div>
 
             <select name="role" value={formData.role} onChange={handleChange}>
@@ -117,15 +152,27 @@ const Register = ({ setShowRegister }) => {
                 onBlur={handlePhoneBlur}
                 className={styles.phoneInput}
               />
-              {error.phone && <span className={styles.errorText}>{error.phone}</span>}
+              {fieldErrors.phone && <span className={styles.errorText}>{fieldErrors.phone}</span>}
             </div>
 
             <div className={styles.inputGroup}>
-              <input type="text" name="country" placeholder={t("country")} value={formData.country} onChange={handleChange} onBlur={handleBlur}/>
-              {error.country && <span className={styles.errorText}>{error.country}</span>}
+              <input
+                type="text"
+                name="country"
+                placeholder={t("country")}
+                value={formData.country}
+                onChange={handleChange}
+                onBlur={handleBlur}
+              />
+              {fieldErrors.country && <span className={styles.errorText}>{fieldErrors.country}</span>}
             </div>
 
-            <button>{t("send")}</button>
+            {error && <ModalError setShowRegister={setShowRegister} error={error}/>}
+            {success && <span className={styles.successText}>{t("register_success")}</span>}
+
+            <button type="submit" disabled={loading}>
+              {loading ? t("loading") : t("send")}
+            </button>
           </form>
         </div>
       </div>

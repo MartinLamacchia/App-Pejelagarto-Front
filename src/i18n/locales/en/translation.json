@@ -24,5 +24,7 @@
     "phoneRequired": "The phone is mandatory",
     "invalidPhone": "The phone number is invalid",
     "countryRequired": "The country is mandatory",
-    "countryLyricsOnly": "The country can only contain letters"
+    "countryLyricsOnly": "The country can only contain letters",
+    "error_duplicate_user": "The email or name and last name are already registered",
+    "error_register_success": "The user registered successfully"
 }
