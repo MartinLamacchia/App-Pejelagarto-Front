@@ -5,14 +5,18 @@ export const registerUser = createAsyncThunk(
   "register/registerUser",
   async (userData, { rejectWithValue }) => {
     try {
-      const { data } = await axios.post(`${import.meta.env.VITE_API_URL}/user/register`, userData);
+      const { data } = await axios.post(
+        `${import.meta.env.VITE_API_URL}/user/register`,
+        // "http://localhost:3001/user/register",
+        userData,
+      );
       return data; // esto termina en action.payload del "fulfilled"
     } catch (error) {
       // Cuando axios detecta un status de error (400, 409, 500...), guarda la respuesta en error.response
       const code = error.response?.data?.code || "network_error";
       return rejectWithValue(code);
     }
-  }
+  },
 );
 
 const initialState = {
@@ -20,6 +24,7 @@ const initialState = {
   loading: false,
   error: null,
   success: false,
+  successCode: null,
 };
 
 const registerSlice = createSlice({
@@ -31,6 +36,7 @@ const registerSlice = createSlice({
       state.loading = false;
       state.error = null;
       state.success = false;
+      state.successCode = null;
     },
   },
   extraReducers: (builder) => {
@@ -43,6 +49,7 @@ const registerSlice = createSlice({
       .addCase(registerUser.fulfilled, (state, action) => {
         state.loading = false;
         state.success = true;
+        state.successCode = action.payload.code;
         state.user = action.payload.newUser;
       })
       .addCase(registerUser.rejected, (state, action) => {

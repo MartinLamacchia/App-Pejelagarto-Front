@@ -8,11 +8,12 @@ import "react-phone-number-input/style.css";
 import { validateRegister } from "./validateRegister";
 import { registerUser, resetRegisterState } from "../../store/features/users/registerSlice";
 import ModalError from "../ModalError/ModalError";
+import ModalSuccess from "../ModalSuccess/ModalSuccess";
 
 const Register = ({ setShowRegister }) => {
   const { t } = useTranslation();
   const dispatch = useDispatch();
-  const { loading, error, success } = useSelector((state) => state.register);
+  const { loading, error, success, successCode  } = useSelector((state) => state.register);
 
   const [formData, setFormData] = useState({
     name: "",
@@ -168,7 +169,7 @@ const Register = ({ setShowRegister }) => {
             </div>
 
             {error && <ModalError setShowRegister={setShowRegister} error={error}/>}
-            {success && <span className={styles.successText}>{t("register_success")}</span>}
+            {success && <ModalSuccess setShowRegister={setShowRegister} success={successCode}/>}
 
             <button type="submit" disabled={loading}>
               {loading ? t("loading") : t("send")}

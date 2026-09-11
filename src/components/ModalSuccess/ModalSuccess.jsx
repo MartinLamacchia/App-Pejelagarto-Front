@@ -1,15 +1,15 @@
 import React from "react";
-import styles from "./ModalError.module.css";
+import styles from "./ModalSuccess.module.css";
 import { IoIosCloseCircle } from "react-icons/io";
 import { useDispatch } from "react-redux";
 import { useTranslation } from "react-i18next";
 import { resetRegisterState } from "../../store/features/users/registerSlice";
 
-const ModalError = ({ setShowRegister, error }) => {
+const ModalSuccess = ({ setShowRegister, success }) => {
   const { t } = useTranslation();
   const dispatch = useDispatch();
 
-  const errorMessage = t(`error_${error}`, {
+  const successMessage = t(`success_${success}`, {
     defaultValue: t("error_unknown"),
   });
 
@@ -24,10 +24,10 @@ const ModalError = ({ setShowRegister, error }) => {
           className={styles.btnClose}
           onClick={handleCloseRegister}
         />
-        <h4>{errorMessage}</h4>
+        <h4>{successMessage}</h4>
       </div>
     </div>
   );
 };
 
-export default ModalError;
+export default ModalSuccess;

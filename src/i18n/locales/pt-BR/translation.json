@@ -26,5 +26,6 @@
     "countryRequired": "O país é obrigatório",
     "countryLyricsOnly": "O país só pode conter letras",
     "error_duplicate_user": "O e-mail ou nome e sobrenome já estão cadastrados",
-    "error_register_success": "O usuário se registrou com sucesso"
+    "error_register_success": "O usuário se registrou com sucesso",
+    "success_register_ok": "O usuário se registrou com sucesso"
 }
