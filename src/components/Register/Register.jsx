@@ -78,6 +78,10 @@ const Register = ({ setShowRegister }) => {
     setShowRegister(false);
   };
 
+    const handleCloseError = () => {
+      dispatch(resetRegisterState());
+    };
+
   return (
     <div className={styles.container}>
       <div className={styles.content}>
@@ -168,7 +172,7 @@ const Register = ({ setShowRegister }) => {
               {fieldErrors.country && <span className={styles.errorText}>{fieldErrors.country}</span>}
             </div>
 
-            {error && <ModalError setShowRegister={setShowRegister} error={error}/>}
+            {error && <ModalError error={error} onClose={handleCloseError}/>}
             {success && <ModalSuccess setShowRegister={setShowRegister} success={successCode}/>}
 
             <button type="submit" disabled={loading}>

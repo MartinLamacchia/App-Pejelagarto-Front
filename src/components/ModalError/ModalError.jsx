@@ -3,9 +3,8 @@ import styles from "./ModalError.module.css";
 import { IoIosCloseCircle } from "react-icons/io";
 import { useDispatch } from "react-redux";
 import { useTranslation } from "react-i18next";
-import { resetRegisterState } from "../../store/features/users/registerSlice";
 
-const ModalError = ({ setShowRegister, error }) => {
+const ModalError = ({ error, onClose }) => {
   const { t } = useTranslation();
   const dispatch = useDispatch();
 
@@ -13,16 +12,12 @@ const ModalError = ({ setShowRegister, error }) => {
     defaultValue: t("error_unknown"),
   });
 
-  const handleCloseRegister = () => {
-    dispatch(resetRegisterState());
-    setShowRegister(false);
-  };
   return (
     <div className={styles.container}>
       <div className={styles.content}>
         <IoIosCloseCircle
           className={styles.btnClose}
-          onClick={handleCloseRegister}
+          onClick={onClose}
         />
         <h4>{errorMessage}</h4>
       </div>

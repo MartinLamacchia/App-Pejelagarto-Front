@@ -7,10 +7,11 @@ export const loginUser = createAsyncThunk(
         try {
             const { data } = await axios.post(
               // `${import.meta.env.VITE_API_URL}/user/login`,
-              "http://localhost:3001/user/register",
+              "http://localhost:3001/user/login",
               cedential
             )
             return data
+            
         } catch (error) {
             const code = error.response?.data?.code || "network_error"
             return rejectWithValue(code)
@@ -52,7 +53,7 @@ const loginSlice = createSlice({
       state.successCode = null
     } 
   },
-  extraReducers: (builder) {
+  extraReducers: (builder) => {
     builder
     .addCase(loginUser.pending, (state) => {
       state.loading = true

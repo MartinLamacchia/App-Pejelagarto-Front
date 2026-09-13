@@ -27,5 +27,7 @@
     "countryLyricsOnly": "The country can only contain letters",
     "error_duplicate_user": "The email or name and last name are already registered",
     "error_register_success": "The user registered successfully",
-    "success_register_ok": "The user registered successfully"
+    "success_register_ok": "The user registered successfully",
+    "error_pass_incorrect": "The password is incorrect",
+    "error_email_incorrect": "The email is not registered"
 }

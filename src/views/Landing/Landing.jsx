@@ -7,14 +7,69 @@ import { FaFacebookSquare } from "react-icons/fa";
 import { FaLinkedin } from "react-icons/fa";
 import { useState } from "react";
 import Register from "../../components/Register/Register";
+import { useDispatch, useSelector } from "react-redux";
+import { validateLogin } from "./validateLogin";
+import {
+  loginUser,
+  resetLoginState,
+} from "../../store/features/users/loginSlice";
+import ModalError from "../../components/ModalError/ModalError";
 
 function Landing() {
   const { t } = useTranslation();
-  const [showRegister, setShowRegister] = useState(false)
+  const [showRegister, setShowRegister] = useState(false);
+  const dispatch = useDispatch();
+  const { loading, error, success, successCode } = useSelector(
+    (state) => state.login,
+  );
+
+  const [formData, setFormData] = useState({
+    email: "",
+    password: "",
+  });
+
+  const [fieldErrors, setFieldErrors] = useState({});
+
+  const handleChange = (e) => {
+    setFormData({
+      ...formData,
+      [e.target.name]: e.target.value,
+    });
+  };
+
+  const handleBlur = (e) => {
+    const { name } = e.target;
+    const validationErrors = validateLogin(formData, t);
+
+    setFieldErrors((prevError) => ({
+      ...prevError,
+      [name]: validationErrors[name],
+    }));
+  };
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+
+    const validationErrors = validateLogin(formData, t);
+    setFieldErrors(validationErrors);
+
+    if (Object.keys(validationErrors).length > 0) {
+      return;
+    }
+
+    dispatch(loginUser(formData));
+  };
 
   const handleShowRegister = () => {
-    setShowRegister(true)
-  }
+    setShowRegister(true);
+  };
+
+  const handleCloseError = () => {
+    dispatch(resetLoginState());
+  };
+
+  console.log(error);
+  
 
   return (
     <div className={styles.container}>
@@ -27,10 +82,42 @@ function Landing() {
         <h2>{t("slogan")}</h2>
       </div>
       <div className={styles.containerForm}>
-        <form action="">
-          <input type="text" placeholder={(t("email"))} />
-          <input type="Password" placeholder={(t("password"))} />
-          <button>{t("login")}</button>
+        <form action="" onSubmit={handleSubmit}>
+          <div className={styles.inputGroup}>
+            <input
+              type="text"
+              name="email"
+              placeholder={t("email")}
+              value={formData.email}
+              onChange={handleChange}
+              onBlur={handleBlur}
+            />
+            {fieldErrors.email && (
+              <span className={styles.errorText}>{fieldErrors.email}</span>
+            )}
+          </div>
+
+          <div className={styles.inputGroup}>
+            <input
+              type="password"
+              name="password"
+              placeholder={t("password")}
+              value={formData.password}
+              onChange={handleChange}
+              onBlur={handleBlur}
+            />
+            {fieldErrors.password && (
+              <span className={styles.errorText}>{fieldErrors.password}</span>
+            )}
+          </div>
+
+          {error && (
+            <ModalError error={error} onClose={handleCloseError}/>
+          )}
+
+          <button type="submit" disabled={loading}>
+            {loading ? t("loading") : t("send")}
+          </button>
         </form>
         <h3 onClick={handleShowRegister}>{t("register")}</h3>
       </div>
@@ -39,11 +126,7 @@ function Landing() {
         <FaFacebookSquare className={styles.iconSocial} />
         <FaLinkedin className={styles.iconSocial} />
       </div>
-      {
-        showRegister && (
-          <Register setShowRegister={setShowRegister}/>
-        )
-      }
+      {showRegister && <Register setShowRegister={setShowRegister} />}
     </div>
   );
 }

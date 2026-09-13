@@ -27,5 +27,7 @@
     "countryLyricsOnly": "El país solo puede contener letras",
     "error_duplicate_user": "El Correo Electronico o Nombre y Apellido ya estan registrados",
     "error_register_success": "El usuario se registro con exito",
-    "success_register_ok": "El usuario se registro con exito"
+    "success_register_ok": "El usuario se registro con exito",
+    "error_pass_incorrect": "La contraseña es incorrecta",
+    "error_email_incorrect": "El email no esta registrado"
 }
