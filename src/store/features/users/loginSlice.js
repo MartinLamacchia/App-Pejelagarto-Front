@@ -6,8 +6,8 @@ export const loginUser = createAsyncThunk(
     async (cedential, { rejectWithValue }) => {
         try {
             const { data } = await axios.post(
-              // `${import.meta.env.VITE_API_URL}/user/login`,
-              "http://localhost:3001/user/login",
+              `${import.meta.env.VITE_API_URL}/user/login`,
+              // "http://localhost:3001/user/login",
               cedential
             )
             return data
