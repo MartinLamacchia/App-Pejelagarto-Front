@@ -14,9 +14,11 @@ import {
   resetLoginState,
 } from "../../store/features/users/loginSlice";
 import ModalError from "../../components/ModalError/ModalError";
+import {useNavigate} from 'react-router-dom'
 
 function Landing() {
   const { t } = useTranslation();
+  const navigate = useNavigate()
   const [showRegister, setShowRegister] = useState(false);
   const dispatch = useDispatch();
   const { loading, error, success, successCode } = useSelector(
@@ -47,7 +49,7 @@ function Landing() {
     }));
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
 
     const validationErrors = validateLogin(formData, t);
@@ -57,7 +59,16 @@ function Landing() {
       return;
     }
 
-    dispatch(loginUser(formData));
+    const response = await dispatch(loginUser(formData));
+
+    if (response.access = true) {
+
+      console.log("Tengo acceso");
+      
+
+      navigate("/home");
+      return;
+    }
   };
 
   const handleShowRegister = () => {
@@ -67,9 +78,6 @@ function Landing() {
   const handleCloseError = () => {
     dispatch(resetLoginState());
   };
-
-  console.log(error);
-  
 
   return (
     <div className={styles.container}>
@@ -111,9 +119,7 @@ function Landing() {
             )}
           </div>
 
-          {error && (
-            <ModalError error={error} onClose={handleCloseError}/>
-          )}
+          {error && <ModalError error={error} onClose={handleCloseError} />}
 
           <button type="submit" disabled={loading}>
             {loading ? t("loading") : t("send")}

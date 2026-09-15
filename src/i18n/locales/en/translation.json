@@ -29,5 +29,7 @@
     "error_register_success": "The user registered successfully",
     "success_register_ok": "The user registered successfully",
     "error_pass_incorrect": "The password is incorrect",
-    "error_email_incorrect": "The email is not registered"
+    "error_email_incorrect": "The email is not registered",
+    "profile": "Profile",
+    "language": "Language"
 }

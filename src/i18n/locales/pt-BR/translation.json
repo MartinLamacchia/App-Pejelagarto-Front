@@ -29,6 +29,8 @@
     "error_register_success": "O usuário se registrou com sucesso",
     "success_register_ok": "O usuário se registrou com sucesso",
     "error_pass_incorrect": "A senha está incorreta",
-    "error_email_incorrect": "O endereço de e-mail não está cadastrado"
+    "error_email_incorrect": "O endereço de e-mail não está cadastrado",
+    "profile": "Perfil",
+    "language": "linguagem"
 
 }
