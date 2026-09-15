@@ -31,6 +31,7 @@
     "error_pass_incorrect": "A senha está incorreta",
     "error_email_incorrect": "O endereço de e-mail não está cadastrado",
     "profile": "Perfil",
-    "language": "linguagem"
+    "language": "linguagem",
+    "Logout": "Salir"
 
 }

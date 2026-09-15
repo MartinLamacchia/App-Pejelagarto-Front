@@ -31,5 +31,6 @@
     "error_pass_incorrect": "The password is incorrect",
     "error_email_incorrect": "The email is not registered",
     "profile": "Profile",
-    "language": "Language"
+    "language": "Language",
+    "Logout": "Log out"
 }
