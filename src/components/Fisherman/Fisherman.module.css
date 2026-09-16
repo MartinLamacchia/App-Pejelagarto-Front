@@ -1,0 +1,18 @@
+.container {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  margin-top: 2rem;
+
+  .message {
+    margin-top: 2rem;
+    font-size: 1rem;
+    font-weight: lighter;
+    text-decoration-line: underline;
+    text-decoration-color: #393d46c2;
+    text-decoration-thickness: 2px;
+    text-underline-offset: 4px;
+  }
+}

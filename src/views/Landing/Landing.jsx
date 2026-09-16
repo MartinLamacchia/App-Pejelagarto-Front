@@ -22,7 +22,7 @@ function Landing() {
   const [showRegister, setShowRegister] = useState(false);
   const dispatch = useDispatch();
   const { loading, error, success, successCode } = useSelector(
-    (state) => state.login,
+    (state) => state.login
   );
 
   const [formData, setFormData] = useState({
