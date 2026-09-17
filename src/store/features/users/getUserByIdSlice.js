@@ -6,7 +6,7 @@ export const getUserById = createAsyncThunk(
   async (id, { rejectWithValue }) => {
     try {
       const { data } = await axios.post(
-        `${import.meta.env.VITE_API_URL}/user/login`,
+        `${import.meta.env.VITE_API_URL}/user/getUserById`,
         // "http://localhost:3001/user/getUserById",
         {id},
       );

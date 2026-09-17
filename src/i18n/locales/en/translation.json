@@ -36,5 +36,6 @@
     "image": "Image",
     "length": "Length",
     "weight": "Weight",
-    "species": "Species"
+    "species": "Species",
+    "loadCatch": "Load catch"
 }

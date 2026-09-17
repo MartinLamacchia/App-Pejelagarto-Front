@@ -36,6 +36,6 @@
     "image": "Imagem",
     "length": "Longo",
     "weight": "Peso",
-    "species": "Espécies"
-
+    "species": "Espécies",
+    "loadCatch": "Carregar pesca"
 }
