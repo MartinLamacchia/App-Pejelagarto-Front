@@ -32,5 +32,9 @@
     "error_email_incorrect": "El email no esta registrado",
     "profile": "Perfil",
     "language": "Idioma",
-    "Logout": "Salir"
+    "Logout": "Salir",
+    "image": "Imagen",
+    "length": "Largo",
+    "weight": "Peso",
+    "species": "Especie"
 }

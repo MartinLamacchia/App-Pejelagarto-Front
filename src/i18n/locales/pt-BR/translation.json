@@ -32,6 +32,10 @@
     "error_email_incorrect": "O endereço de e-mail não está cadastrado",
     "profile": "Perfil",
     "language": "linguagem",
-    "Logout": "Salir"
+    "Logout": "Salir",
+    "image": "Imagem",
+    "length": "Longo",
+    "weight": "Peso",
+    "species": "Espécies"
 
 }

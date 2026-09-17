@@ -6,8 +6,8 @@ export const getAllFishForUser = createAsyncThunk(
   async (idUser, { rejectWithValue }) => {
     try {
       const { data } = await axios.post(
-        `${import.meta.env.VITE_API_URL}/catchFish/getAllFishForUser`,
-        // "http://localhost:3001/catchFish/getAllFishForUser",
+        // `${import.meta.env.VITE_API_URL}/catchFish/getAllFishForUser`,
+        "http://localhost:3001/catchFish/getAllFishForUser",
         {idUser},
       );
       return data;
