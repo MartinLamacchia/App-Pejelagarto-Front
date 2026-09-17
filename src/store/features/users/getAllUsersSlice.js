@@ -6,8 +6,8 @@ export const getAllUsers = createAsyncThunk(
   async (_, { rejectWithValue }) => {
     try {
       const { data } = await axios.get(
-        // `${import.meta.env.VITE_API_URL}/user/getAllUsers`
-        "http://localhost:3001/user/getAllUsers"
+        `${import.meta.env.VITE_API_URL}/user/getAllUsers`
+        // "http://localhost:3001/user/getAllUsers"
       );
 
       console.log(data);
