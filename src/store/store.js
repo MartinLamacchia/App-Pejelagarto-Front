@@ -4,6 +4,7 @@ import loginReducer from './features/users/loginSlice'
 import getUserByIdReducer from './features/users/getUserByIdSlice'
 import getAllFishForUserReducer from "./features/catchFish/getAllFishForUser";
 import getAllUsersReducer from './features/users/getAllUsersSlice'
+import registerCatchReducer from './features/catchFish/registerCatchSlice'
 
 const store = configureStore({
   reducer: {
@@ -11,7 +12,8 @@ const store = configureStore({
     login: loginReducer,
     getUserById: getUserByIdReducer,
     getAllFishForUser: getAllFishForUserReducer,
-    getAllUsers: getAllUsersReducer    
+    getAllUsers: getAllUsersReducer,
+    registerCatch: registerCatchReducer    
   },
 });
 
