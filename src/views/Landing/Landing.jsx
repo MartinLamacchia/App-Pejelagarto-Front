@@ -61,7 +61,10 @@ function Landing() {
 
     const response = await dispatch(loginUser(formData));
 
-    if (response.access = true) {
+    console.log(response);
+    
+
+    if (response.payload.access) {
 
       console.log("Tengo acceso");
       
