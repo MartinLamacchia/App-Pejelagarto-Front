@@ -61,14 +61,7 @@ function Landing() {
 
     const response = await dispatch(loginUser(formData));
 
-    console.log(response);
-    
-
     if (response.payload.access) {
-
-      console.log("Tengo acceso");
-      
-
       navigate("/home");
       return;
     }

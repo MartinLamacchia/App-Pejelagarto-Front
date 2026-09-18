@@ -9,8 +9,6 @@ export const getAllUsers = createAsyncThunk(
         `${import.meta.env.VITE_API_URL}/user/getAllUsers`
         // "http://localhost:3001/user/getAllUsers"
       );
-
-      console.log(data);
       
       return data;
     } catch (error) {

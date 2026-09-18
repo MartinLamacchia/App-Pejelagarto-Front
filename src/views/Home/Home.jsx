@@ -5,10 +5,7 @@ import Fisherman from "../../components/Fisherman/Fisherman";
 import Fiscal from "../../components/Fiscal/Fiscal";
 
 const Home = () => {
-  const {user} = useSelector((state) => state.login)
-
-  console.log(user.role);
-  
+  const {user} = useSelector((state) => state.login)  
   
   return (
   <div>

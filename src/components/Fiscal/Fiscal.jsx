@@ -72,8 +72,6 @@ const Fiscal = () => {
 
   };
 
-  console.log(fieldErrors);
-
   return (
     <div className={styles.container}>
       <h2>{t("loadCatch")}</h2>

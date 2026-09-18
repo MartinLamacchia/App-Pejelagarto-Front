@@ -10,8 +10,6 @@ export const registerCatch = createAsyncThunk(
         // "http://localhost:3001/catchFish/registerFish",
         fishData,
       );
-
-      console.log(data);
       
       return data; // esto termina en action.payload del "fulfilled"
     } catch (error) {
