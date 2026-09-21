@@ -30,9 +30,11 @@ const Nav = () => {
       navigate("/profile")
     }
 
-    if (location.pathname === "/profile") {
+    if (location.pathname !== "/home") {
       navigate("/home")
     }
+
+
   } 
 
   return (

@@ -1,0 +1,20 @@
+.container {
+  width: 100%;
+  display: grid;
+  grid-template-columns: 1fr 5fr 1fr;
+  border: 2px solid #213561;
+  border-radius: 10px;
+
+  .contentItem{
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 1.2rem;
+    padding: 0.2rem 0.5rem;
+
+    h4{
+      text-align: center;
+    }
+  }
+}

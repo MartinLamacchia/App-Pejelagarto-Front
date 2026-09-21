@@ -3,6 +3,7 @@ import Nav from "../../components/Nav/Nav";
 import { useSelector } from "react-redux";
 import Fisherman from "../../components/Fisherman/Fisherman";
 import Fiscal from "../../components/Fiscal/Fiscal";
+import Judge from "../../components/Judge/Judge";
 
 const Home = () => {
   const {user} = useSelector((state) => state.login)  
@@ -13,8 +14,10 @@ const Home = () => {
     {
       user?.role === "fisherman" ? (
         <Fisherman/>
-      ) : user?.role === "fiscal" && (
+      ) : user?.role === "fiscal" ? (
         <Fiscal/>
+      ) : user?.role === "judge" && (
+        <Judge/>
       )
     }
   </div>);

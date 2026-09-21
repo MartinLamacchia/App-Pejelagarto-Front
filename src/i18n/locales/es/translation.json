@@ -41,5 +41,8 @@
     "success_register_catch": "Captura registrada con exito",
     "error_duplicate_catch": "El participante ya tiene registrada una captura con la misma especie, largo y peso. ¿Desea registrarla igualmente?",
     "yes": "Si",
-    "no": "No"
+    "no": "No",
+    "fishermen": "Pescadores",
+    "photo": "Foto",
+    "catches": "Capturas"
 }
