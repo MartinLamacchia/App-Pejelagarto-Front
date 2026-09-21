@@ -6,8 +6,8 @@ export const registerCatch = createAsyncThunk(
   async ( fishData, { rejectWithValue }) => {
     try {
       const { data } = await axios.post(
-        `${import.meta.env.VITE_API_URL}/catchFish/registerFish`,
-        // "http://localhost:3001/catchFish/registerFish",
+        // `${import.meta.env.VITE_API_URL}/catchFish/registerFish`,
+        "http://localhost:3001/catchFish/registerFish",
         fishData,
       );
       

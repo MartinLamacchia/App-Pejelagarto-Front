@@ -20,7 +20,7 @@ const Nav = () => {
   };
 
   const handleLogout = () => {
-    dispatch(logout)
+    dispatch(logout())
     navigate("/")
 
   }
@@ -33,10 +33,7 @@ const Nav = () => {
     if (location.pathname === "/profile") {
       navigate("/home")
     }
-  }
-
-  console.log(location);
-  
+  } 
 
   return (
     <div className={styles.container}>

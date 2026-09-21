@@ -37,5 +37,6 @@
     "length": "Largo",
     "weight": "Peso",
     "species": "Especie",
-    "loadCatch": "Cargar pesca"
+    "loadCatch": "Cargar pesca",
+    "success_register_catch": "Captura registrada con exito"
 }

@@ -37,5 +37,6 @@
     "length": "Length",
     "weight": "Weight",
     "species": "Species",
-    "loadCatch": "Load catch"
+    "loadCatch": "Load catch",
+    "success_register_catch": "Capture successfully recorded"
 }

@@ -6,11 +6,13 @@ import { useTranslation } from "react-i18next";
 import styles from "./Fiscal.module.css";
 import { validateCatch } from "./validateCatch";
 import { registerCatch } from "../../store/features/catchFish/registerCatchSlice";
+import ModalSuccess from "../ModalSuccess/ModalSuccess";
 
 const Fiscal = () => {
   const { t } = useTranslation();
   const { user } = useSelector((state) => state.login);
   const { users } = useSelector((state) => state.getAllUsers);
+  const { loading, error, success, successCode  } = useSelector((state) => state.registerCatch);
   const dispatch = useDispatch();
   const [formData, setFormData] = useState({
     fisherman: "",
@@ -20,6 +22,7 @@ const Fiscal = () => {
     weight: null,
   });
   const [fieldErrors, setFieldErrors] = useState({})
+  const [showModalSuccess, setShowModalSuccess] = useState(false)
 
   const fetchAllUsers = async () => {
     await dispatch(getAllUsers());
@@ -65,12 +68,10 @@ const Fiscal = () => {
       return;
     }
 
-    const response = await dispatch(registerCatch(formData))
-
-    console.log(response);
+    dispatch(registerCatch(formData))
     
-
   };
+  
 
   return (
     <div className={styles.container}>
@@ -115,7 +116,7 @@ const Fiscal = () => {
           onChange={handleChange}
           onBlur={handleBlur}
           name="length"
-          value={formData.length}
+          value={formData.length ?? ""}
         />
         <input
           type="number"
@@ -123,10 +124,15 @@ const Fiscal = () => {
           onChange={handleChange}
           onBlur={handleBlur}
           name="weight"
-          value={formData.weight}
+          value={formData.weight ?? ""}
         />
         <button type="submit">{t("send")}</button>
       </form>
+      {
+        success && (
+          <ModalSuccess success={successCode} successShow={success} setFormData={setFormData}/>
+        )
+      }
     </div>
   );
 };
