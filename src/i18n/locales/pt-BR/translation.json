@@ -38,5 +38,8 @@
     "weight": "Peso",
     "species": "Espécies",
     "loadCatch": "Carregar pesca",
-    "success_register_catch": "Captura gravada com sucesso"
+    "success_register_catch": "Captura gravada com sucesso",
+    "error_duplicate_catch": "O participante já possui uma captura registrada da mesma espécie, comprimento e peso. Deseja registrá-la também?",
+    "yes": "Sim",
+    "no": "Não"
 }

@@ -7,12 +7,15 @@ import styles from "./Fiscal.module.css";
 import { validateCatch } from "./validateCatch";
 import { registerCatch } from "../../store/features/catchFish/registerCatchSlice";
 import ModalSuccess from "../ModalSuccess/ModalSuccess";
+import ModalDuplicateCatch from "../ModalDuplicateCatch/ModalDuplicateCatch";
 
 const Fiscal = () => {
   const { t } = useTranslation();
   const { user } = useSelector((state) => state.login);
   const { users } = useSelector((state) => state.getAllUsers);
-  const { loading, error, success, successCode  } = useSelector((state) => state.registerCatch);
+  const { loading, error, success, successCode } = useSelector(
+    (state) => state.registerCatch,
+  );
   const dispatch = useDispatch();
   const [formData, setFormData] = useState({
     fisherman: "",
@@ -21,8 +24,9 @@ const Fiscal = () => {
     length: null,
     weight: null,
   });
-  const [fieldErrors, setFieldErrors] = useState({})
-  const [showModalSuccess, setShowModalSuccess] = useState(false)
+  const [fieldErrors, setFieldErrors] = useState({});
+  const [catchDuplicateMessage, setcatchDuplicateMessage] = useState("");
+  const [showModalDuplicate, setShowModalDuplicate] = useState(false);
 
   const fetchAllUsers = async () => {
     await dispatch(getAllUsers());
@@ -39,24 +43,23 @@ const Fiscal = () => {
     setFormData({
       ...formData,
       [name]:
-      name === "length" || name === "weight"
-        ? value === ""
-          ? null
-          : Number(value)
-        : value,
+        name === "length" || name === "weight"
+          ? value === ""
+            ? null
+            : Number(value)
+          : value,
     });
   };
 
   const handleBlur = (e) => {
-    const {name} = e.target
-    const validationErrors = validateCatch(formData, t)
+    const { name } = e.target;
+    const validationErrors = validateCatch(formData, t);
 
     setFieldErrors((prevError) => ({
       ...prevError,
-      [name]: validationErrors[name]
-    }))
-
-  }
+      [name]: validationErrors[name],
+    }));
+  };
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -68,10 +71,15 @@ const Fiscal = () => {
       return;
     }
 
-    dispatch(registerCatch(formData))
-    
+    const response = await dispatch(registerCatch(formData));
+
+    console.log(response);
+
+    if (response.payload === "duplicate_catch") {
+      setcatchDuplicateMessage("duplicate_catch");
+      setShowModalDuplicate(true);
+    }
   };
-  
 
   return (
     <div className={styles.container}>
@@ -128,11 +136,21 @@ const Fiscal = () => {
         />
         <button type="submit">{t("send")}</button>
       </form>
-      {
-        success && (
-          <ModalSuccess success={successCode} successShow={success} setFormData={setFormData}/>
-        )
-      }
+      {success && (
+        <ModalSuccess
+          success={successCode}
+          successShow={success}
+          setFormData={setFormData}
+        />
+      )}
+      {showModalDuplicate && (
+        <ModalDuplicateCatch
+          error={catchDuplicateMessage}
+          setShowModalDuplicate={setShowModalDuplicate}
+          setFormData={setFormData}
+          formData={formData}
+        />
+      )}
     </div>
   );
 };

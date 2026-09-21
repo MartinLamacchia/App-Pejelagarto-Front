@@ -38,5 +38,8 @@
     "weight": "Weight",
     "species": "Species",
     "loadCatch": "Load catch",
-    "success_register_catch": "Capture successfully recorded"
+    "success_register_catch": "Capture successfully recorded",
+    "error_duplicate_catch": "The participant already has a record for the same species, length, and weight. Do you wish to register it anyway?",
+    "yes": "Yes",
+    "no": "No"
 }
